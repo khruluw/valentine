@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Youth Service Invite 💖</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    
+    <style>
+        :root {
+            --soft-pink: #ffafbd;
+            --warm-orange: #ffc3a0;
+            --deep-rose: #d63384;
+            --glass: rgba(255, 255, 255, 0.25);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: radial-gradient(circle at center, var(--warm-orange) 0%, var(--soft-pink) 100%);
+            font-family: 'Quicksand', sans-serif;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .master-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            width: 100%;
+            max-width: 700px;
+            margin: 0;
+            padding: 0px;
+        }
+
+        .top-greeting {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(2.2rem, 9vw, 3.5rem);
+            color: var(--deep-rose);
+            margin-bottom: 15px;
+            text-align: center;
+            width: 100%;
+            animation: breathe 3s ease-in-out infinite;
+            text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.2);
+            transition: opacity 0.5s ease;
+        }
+
+        @keyframes breathe {
+            0%, 100% { transform: scale(1); opacity: 0.9; }
+            50% { transform: scale(1.05); opacity: 1; }
+        }
+
+        .heart-particle {
+            position: absolute;
+            pointer-events: none;
+            z-index: 1;
+            font-size: 20px;
+            opacity: 0.3;
+            animation: floatUp 8s linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(110vh) rotate(0deg); opacity: 0; }
+            50% { opacity: 0.4; }
+            100% { transform: translateY(-20vh) rotate(360deg); opacity: 0; }
+        }
+
+        .card {
+            background: var(--glass);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            padding: 1.5rem 1.5rem;
+            border-radius: 40px;
+            box-shadow: 0 15px 40px rgba(214, 51, 132, 0.1);
+            text-align: center;
+            width: 100%;
+        }
+
+        .hidden-state {
+            display: none !important;
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            color: var(--deep-rose);
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+            min-height: 3.5em; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            min-height: 120px; 
+        }
+
+        button {
+            padding: 12px 35px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: 'Quicksand', sans-serif;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        #yesBtn {
+            background: linear-gradient(45deg, #ff416c, #ff4b2b);
+            color: white;
+            z-index: 1000;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            will-change: transform;
+        }
+
+        #noBtn {
+            background: white;
+            color: #ff416c;
+            will-change: transform;
+            z-index: 999;
+        }
+
+        #success h1 { 
+            color: #d63384; 
+            font-size: 3rem; 
+            min-height: auto; 
+            margin-bottom: 15px; 
+        }
+
+        @keyframes popIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        #success {
+            animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="master-container">
+        <h2 class="top-greeting" id="topGreeting">Happy Valentine's Day</h2>
+
+        <div class="card" id="valentineCard">
+            <img src="https://imgs.search.brave.com/bXP2DZStju1yQHqZPjrrdLlyDEv8frVr8l4MygkZBU0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzM4L2Ex/LzJlLzM4YTEyZWMz/NTk5MTBiMmI4Y2Rl/M2E3YjFjOTFhMmRl/LmpwZw" alt="Valentine's GIF" style="width: 50%;height: 50%; max-width: 300px; border-radius: 20px; margin: 0;">   
+            <h1 id="headline">Your seat for youth service is saved, but are you? Come through tonight! 🙌</h1>
+            <div class="btn-wrapper">
+                <button id="yesBtn">Yes! ✨</button>
+                <button id="noBtn">No</button>
+            </div>
+        </div>
+
+        <div class="card hidden-state" id="success">
+            <img src="https://imgs.search.brave.com/WAT0PgpX1oV0_n4nwZWiqyBQH2psyG0bvekPzpikDlU/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/c2h1dHRlcnN0b2Nr/LmNvbS9pbWFnZS12/ZWN0b3IvY3V0ZS1q/ZXN1cy1jaHJpc3Qt/Y2FydG9vbi1jaGFy/YWN0ZXItMjYwbnct/MjI4NTQyODk4NS5q/cGc" alt="Celebration GIF" style="width: 100%; max-width: 300px; border-radius: 20px; margin-bottom: 20px;">
+            <h1>I knew you'd say yes! 🥰</h1>
+            <p style="color: #d63384; font-weight: 700; font-size: 1.4rem; line-height: 1.4;">Heart aligned. Purpose defined. 💘 Best Valentine’s decision ever — see you at 5:30! 🎸🔥</p>
+        </div>
+    </div>
+
+    <script>
+        const noBtn = document.getElementById('noBtn');
+        const yesBtn = document.getElementById('yesBtn');
+        const valentineCard = document.getElementById('valentineCard');
+        const successCard = document.getElementById('success');
+        const headline = document.getElementById('headline');
+        const topGreeting = document.getElementById('topGreeting');
+
+        let isBouncing = false;
+        let x = 0, y = 0;
+        let vx = 3; 
+        let vy = 3; 
+        let yesScale = 1;
+        
+        const phrases = [
+            "Wait! You're missing out! ✨",
+            "Stop chasing the 'No' button and start chasing your purpose! 🙌",
+            "Error 404: 'No' button not found. 💻",
+            "Finding the ultimate 'Match'—come see what we're about! 🏹",
+            "Is it hot in here, or is it just the Holy Spirit? 🔥",
+            "Caffeine, Community, and Christ. That’s a win! ☕",
+            "Your destiny is calling... it says 'Click Yes'! 📞",
+            "Better than a box of chocolates. 🍫"
+        ];
+        let phraseIndex = 0;
+
+        function initHearts() {
+            for (let i = 0; i < 15; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart-particle';
+                heart.innerHTML = ['❤️','💖','✨','💕'][Math.floor(Math.random()*4)];
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDelay = (Math.random() * 8) + 's';
+                document.body.appendChild(heart);
+            }
+        }
+        initHearts();
+
+        function moveNoButton() {
+            if (!isBouncing) return;
+            const btnRect = noBtn.getBoundingClientRect();
+            const maxX = window.innerWidth - btnRect.width;
+            const maxY = window.innerHeight - btnRect.height;
+
+            x += vx; y += vy;
+
+            if (x >= maxX) { x = maxX; vx = -Math.abs(vx) * (0.8 + Math.random() * 0.4); } 
+            else if (x <= 0) { x = 0; vx = Math.abs(vx); }
+
+            if (y >= maxY) { y = maxY; vy = -Math.abs(vy) * (0.8 + Math.random() * 0.4); } 
+            else if (y <= 0) { y = 0; vy = Math.abs(vy); }
+
+            noBtn.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+            requestAnimationFrame(moveNoButton);
+        }
+
+        const handleNoInteraction = () => {
+            if (!isBouncing) {
+                const rect = noBtn.getBoundingClientRect();
+                x = rect.left; y = rect.top;
+                noBtn.style.position = 'fixed';
+                noBtn.style.top = '0'; noBtn.style.left = '0'; noBtn.style.margin = '0';
+                
+                // Initialize velocities to move UP and LEFT (towards the Yes button)
+                vx = -3; 
+                vy = -3;
+                
+                isBouncing = true;
+                moveNoButton();
+            }
+            
+            headline.innerText = phrases[phraseIndex];
+            phraseIndex = (phraseIndex + 1) % phrases.length;
+            yesScale += 0.35; 
+            yesBtn.style.transform = `scale(${yesScale})`;
+            vx *= 1.02; vy *= 1.02;
+        };
+
+        noBtn.addEventListener('mouseenter', handleNoInteraction);
+        noBtn.addEventListener('touchstart', (e) => { e.preventDefault(); handleNoInteraction(); });
+
+        yesBtn.addEventListener('click', () => {
+            isBouncing = false;
+            valentineCard.classList.add('hidden-state');
+            noBtn.classList.add('hidden-state');
+            topGreeting.classList.add('hidden-state'); 
+            successCard.classList.remove('hidden-state');
+
+            confetti({
+                particleCount: 150,
+                spread: 70,
+                origin: { y: 0.6 },
+                colors: ['#ff416c', '#ff4b2b', '#ffafbd']
+            });
+            
+            setTimeout(() => {
+                confetti({ particleCount: 80, angle: 60, spread: 55, origin: { x: 0 } });
+                confetti({ particleCount: 80, angle: 120, spread: 55, origin: { x: 1 } });
+            }, 250);
+        });
+
+        window.addEventListener('resize', () => {
+            if (!isBouncing) return;
+            x = Math.max(0, Math.min(x, window.innerWidth - noBtn.offsetWidth));
+            y = Math.max(0, Math.min(y, window.innerHeight - noBtn.offsetHeight));
+        });
+    </script>
+</body>
+</html>
