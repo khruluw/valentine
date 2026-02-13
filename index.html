@@ -243,8 +243,8 @@
                 noBtn.style.top = '0'; noBtn.style.left = '0'; noBtn.style.margin = '0';
                 
                 // Initialize velocities to move UP and LEFT (towards the Yes button)
-                vx = -3; 
-                vy = -3;
+                vx = -8; 
+                vy = -8;
                 
                 isBouncing = true;
                 moveNoButton();
@@ -252,7 +252,7 @@
             
             headline.innerText = phrases[phraseIndex];
             phraseIndex = (phraseIndex + 1) % phrases.length;
-            yesScale += 0.35; 
+            yesScale += 0.65; 
             yesBtn.style.transform = `scale(${yesScale})`;
             vx *= 1.02; vy *= 1.02;
         };
